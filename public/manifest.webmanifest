@@ -1,0 +1,16 @@
+{
+  "name": "SMIRROR Solutions - Full-Stack Development Experts",
+  "short_name": "SMIRROR Solutions",
+  "description": "Professional web development that lets you relax. We build complete digital solutions from frontend to backend using TypeScript.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

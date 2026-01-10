@@ -1,0 +1,18 @@
+# robots.txt for SMIRROR Solutions
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://smirror.solutions/sitemap.xml
+
+# Disallow admin and private pages (if any in future)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Allow important resources
+Allow: /_next/static/
+Allow: /_next/image/
+
+# Crawl-delay (optional - adjust based on server capacity)
+Crawl-delay: 1

@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111827;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* SMIRROR Solutions Color Palette */
+:root {
+  /* Primary Colors */
+  --smirror-blue-900: #1a365d;
+  --smirror-blue-700: #2d3748;
+  --smirror-blue-600: #3182ce;
+  --smirror-blue-500: #4299e1;
+  --smirror-blue-400: #63b3ed;
+  --smirror-blue-300: #90cdf4;
+  --smirror-blue-100: #ebf8ff;
+
+  /* Secondary Colors */
+  --smirror-purple-600: #805ad5;
+  --smirror-purple-500: #9f7aea;
+  --smirror-purple-400: #b794f6;
+  --smirror-purple-100: #faf5ff;
+
+  /* Neutral Colors */
+  --smirror-gray-900: #1a202c;
+  --smirror-gray-800: #2d3748;
+  --smirror-gray-700: #4a5568;
+  --smirror-gray-600: #718096;
+  --smirror-gray-500: #a0aec0;
+  --smirror-gray-400: #cbd5e0;
+  --smirror-gray-300: #e2e8f0;
+  --smirror-gray-200: #edf2f7;
+  --smirror-gray-100: #f7fafc;
+  --smirror-gray-50: #f8f9fa;
+
+  /* Accent Colors */
+  --smirror-cyan-500: #00bcd4;
+  --smirror-cyan-400: #26c6da;
+}
+
+/* Consistent Dark Theme Background with Dense Square Patterns */
+.geometric-bg {
+  background: linear-gradient(135deg,
+    rgba(31, 41, 55, 0.98) 0%,
+    rgba(17, 24, 39, 0.99) 50%,
+    rgba(31, 41, 55, 0.98) 100%);
+  background-image:
+    linear-gradient(rgba(75, 85, 99, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 85, 99, 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+  background-attachment: fixed;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
