@@ -30,23 +30,64 @@ export default function InternshipsPage() {
     "Good communication skills and team player attitude"
   ];
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would send the data to your backend
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsApplyOpen(false);
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        school: "",
-        course: "",
-        year: "",
-        resume: ""
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/internship`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          phone: formData.phone,
+          university: formData.school || undefined,
+          course: formData.course || undefined,
+          yearOfStudy: formData.year || undefined,
+          motivation: `Application for internship program`,
+          resumeUrl: formData.resume || undefined,
+        }),
       });
-    }, 3000);
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit application');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsApplyOpen(false);
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          school: "",
+          course: "",
+          year: "",
+          resume: ""
+        });
+      }, 3000);
+    } catch (err: any) {
+      console.error('Internship application error:', err);
+      setError(err.message || 'Failed to submit. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -182,6 +223,11 @@ export default function InternshipsPage() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
+                        {error}
+                      </div>
+                    )}
                     <div>
                       <label className="block text-sm font-semibold text-white mb-2">
                         Full Name <span className="text-red-400">*</span>
@@ -295,9 +341,10 @@ export default function InternshipsPage() {
 
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
+                      disabled={isLoading}
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
                     >
-                      Submit Application
+                      {isLoading ? 'Submitting...' : 'Submit Application'}
                     </button>
                   </form>
                 )}

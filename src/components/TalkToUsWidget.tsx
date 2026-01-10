@@ -35,20 +35,52 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
     if (onClose) onClose();
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend API
-    setIsSubmitted(true);
-    setTimeout(() => {
-      handleClose();
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: ""
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          company: formData.company || undefined,
+          message: formData.message,
+        }),
       });
-    }, 3000);
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit contact form');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        handleClose();
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: ""
+        });
+      }, 3000);
+    } catch (err: any) {
+      console.error('Contact form error:', err);
+      setError(err.message || 'Failed to submit. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -211,6 +243,11 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
+                        {error}
+                      </div>
+                    )}
                     <div>
                       <label className="block text-sm font-semibold text-white mb-2">
                         Your Name <span className="text-red-400">*</span>
@@ -286,9 +323,10 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
 
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-green-500/30"
+                      disabled={isLoading}
+                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-green-500/30"
                     >
-                      Send Message
+                      {isLoading ? 'Sending...' : 'Send Message'}
                     </button>
 
                     <p className="text-xs text-gray-400 text-center">

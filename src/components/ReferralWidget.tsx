@@ -17,24 +17,56 @@ export default function ReferralWidget() {
     message: ""
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend API
-    // For now, we'll just simulate a successful submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setShowForm(false);
-      setIsSubmitted(false);
-      setFormData({
-        referrerName: "",
-        referrerEmail: "",
-        companyName: "",
-        contactName: "",
-        contactEmail: "",
-        message: ""
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/referral`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          referrerName: formData.referrerName,
+          referrerEmail: formData.referrerEmail,
+          companyName: formData.companyName || undefined,
+          clientName: formData.contactName || undefined,
+          clientEmail: formData.contactEmail || undefined,
+          message: formData.message || undefined,
+        }),
       });
-    }, 3000);
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit referral');
+      }
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setShowForm(false);
+        setIsSubmitted(false);
+        setFormData({
+          referrerName: "",
+          referrerEmail: "",
+          companyName: "",
+          contactName: "",
+          contactEmail: "",
+          message: ""
+        });
+      }, 3000);
+    } catch (err: any) {
+      console.error('Referral error:', err);
+      setError(err.message || 'Failed to submit. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -199,6 +231,11 @@ export default function ReferralWidget() {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
+                        {error}
+                      </div>
+                    )}
                     <div>
                       <label className="block text-sm font-semibold text-white mb-2">
                         Your Name <span className="text-red-400">*</span>
@@ -296,9 +333,10 @@ export default function ReferralWidget() {
                       </button>
                       <button
                         type="submit"
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
+                        disabled={isLoading}
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
                       >
-                        Submit Referral
+                        {isLoading ? 'Submitting...' : 'Submit Referral'}
                       </button>
                     </div>
 
