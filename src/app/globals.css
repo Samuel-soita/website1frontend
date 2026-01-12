@@ -45,16 +45,13 @@
   --smirror-cyan-400: #26c6da;
 }
 
-/* Consistent Dark Theme Background with Dense Square Patterns */
+/* Consistent Dark Theme Background with Ultra-Dense Square Patterns */
 .geometric-bg {
-  background: linear-gradient(135deg,
-    rgba(31, 41, 55, 0.98) 0%,
-    rgba(17, 24, 39, 0.99) 50%,
-    rgba(31, 41, 55, 0.98) 100%);
+  background-color: #0f172a;
   background-image:
-    linear-gradient(rgba(75, 85, 99, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(75, 85, 99, 0.08) 1px, transparent 1px);
-  background-size: 12px 12px;
+    linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 3px 3px;
   background-attachment: fixed;
 }
 

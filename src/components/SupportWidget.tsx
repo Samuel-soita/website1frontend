@@ -401,7 +401,8 @@ export default function SupportWidget() {
                           Call Us
                         </a>
                       </div>
-                        </div>
+                    </div>
+                    </div>
                       </>
                     )}
                   </motion.div>

@@ -168,12 +168,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 text-white relative overflow-x-hidden`}
+        className={`${inter.variable} font-sans antialiased bg-slate-900 text-white relative overflow-x-hidden`}
       >
         <div className="geometric-bg fixed inset-0 -z-10" aria-hidden="true"></div>
         <Navigation />
         <StructuredDataWrapper />
-        <main className="relative z-10 pt-16" role="main">
+        <main className="relative z-10 pt-20" role="main">
           {children}
         </main>
       </body>

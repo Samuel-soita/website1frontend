@@ -11,6 +11,7 @@ interface TalkToUsWidgetProps {
 }
 
 export default function TalkToUsWidget({ externalOpen, onClose, showButton = true }: TalkToUsWidgetProps = {}) {
+  const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -21,6 +22,10 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
     company: "",
     message: ""
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Sync with external open state
   useEffect(() => {
@@ -90,12 +95,16 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
     });
   };
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
       {/* Floating Talk to Us Button - Round in Corner - Only show if showButton is true */}
       {showButton && (
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
+          initial={{ opacity: 1, scale: 1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 2 }}
           className="fixed bottom-6 right-6 z-50"
