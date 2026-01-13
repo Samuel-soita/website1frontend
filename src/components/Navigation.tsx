@@ -22,8 +22,8 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="group relative"
             aria-label="SMIRROR Solutions Home"
           >
@@ -41,6 +41,7 @@ export default function Navigation() {
                 href={item.href}
                 className="text-gray-400 hover:text-white font-medium text-sm tracking-wide transition-colors duration-200 relative group"
                 aria-label={`Navigate to ${item.label} page`}
+                title={item.label}
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -48,22 +49,24 @@ export default function Navigation() {
             ))}
             <Link
               href="#contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors duration-200"
+              className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors duration-200 shadow-md hover:shadow-lg"
               aria-label="Get started - Contact us"
+              title="Get Started"
             >
               Get Started
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Hamburger Menu Button - Right side */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors duration-200"
+            className="md:hidden p-2 text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 relative"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            title={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -71,35 +74,10 @@ export default function Navigation() {
               )}
             </svg>
           </button>
+
+
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div id="mobile-menu" className="md:hidden pb-6 border-t border-gray-800/50 pt-4" role="menu">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-400 hover:text-white font-medium text-sm transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                  role="menuitem"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                href="#contact"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold text-sm text-center transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-                role="menuitem"
-                aria-label="Get started - Contact us"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
