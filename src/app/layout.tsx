@@ -168,7 +168,8 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-slate-900 text-white relative overflow-x-hidden`}
+        className={`${inter.variable} font-sans antialiased text-white relative overflow-x-hidden`}
+        style={{ backgroundColor: '#1a1a1a' }}
       >
         <div className="geometric-bg fixed inset-0 -z-10" aria-hidden="true"></div>
         <Navigation />

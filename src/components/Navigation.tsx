@@ -14,7 +14,8 @@ export default function Navigation() {
 
   return (
     <nav 
-      className="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-800/50 z-50"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-700/30"
+      style={{ backgroundColor: '#1a1a1a' }}
       role="navigation"
       aria-label="Main navigation"
     >
