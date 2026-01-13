@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 
@@ -33,25 +34,52 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
-            {/* Main Headline */}
-            <h1
-              id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              <span className="block">Professional Web</span>
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Development
-              </span>
-              <span className="block text-xl sm:text-2xl lg:text-3xl font-medium mt-4 text-gray-300">
-                That Lets You Relax
-              </span>
-            </h1>
+            {/* Content with Image and Text Side by Side */}
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-8">
+              {/* Hero Image */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex-shrink-0"
+              >
+                <div className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+                  <Image
+                    src="/SM.ICON.png"
+                    alt="SMIRROR Hero Image"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </motion.div>
 
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              We handle everything - from websites to complex web apps.
-              You focus on your business, we manage the technology.
-            </p>
+              {/* Text Content */}
+              <div className="flex-1 text-center lg:text-left">
+                {/* Main Headline */}
+                <h1
+                  id="hero-heading"
+                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
+                >
+                  <span className="block">Professional Web</span>
+                  <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                    Development
+                  </span>
+                  <span className="block text-lg sm:text-xl lg:text-2xl font-medium mt-4 text-gray-300">
+                    That Lets You Relax
+                  </span>
+                </h1>
+
+                {/* Subheadline */}
+                <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  We handle everything - from websites to complex web apps.
+                  You focus on your business, we manage the technology.
+                </p>
+              </div>
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
