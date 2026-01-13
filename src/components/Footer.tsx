@@ -4,33 +4,34 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <footer className="text-white py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="geometric-bg absolute inset-0 -z-10"></div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
             <Link href="/" className="inline-block mb-3">
-              <h3 className="text-xl font-bold">SMIRROR Solutions</h3>
+              <h3 className="text-xl font-bold text-white">SMIRROR Solutions</h3>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-gray-300 text-sm mb-4">
               Professional web development services
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
             <div className="space-y-2">
-              <Link href="/" className="block text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/" className="block text-gray-300 hover:text-white text-sm transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="block text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/about" className="block text-gray-300 hover:text-white text-sm transition-colors">
                 About
               </Link>
-              <Link href="/services" className="block text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/services" className="block text-gray-300 hover:text-white text-sm transition-colors">
                 Services
               </Link>
-              <Link href="/projects" className="block text-gray-400 hover:text-white text-sm transition-colors">
+              <Link href="/projects" className="block text-gray-300 hover:text-white text-sm transition-colors">
                 Projects
               </Link>
             </div>
@@ -38,8 +39,8 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <div className="space-y-2 text-sm text-gray-400">
+            <h4 className="font-semibold mb-4 text-white">Contact</h4>
+            <div className="space-y-2 text-sm text-gray-300">
               <p>samuelsoita79@gmail.com</p>
               <p>+254 768 640 343</p>
               <p>Nairobi, Kenya</p>
@@ -48,8 +49,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-gray-800 mt-8 pt-6 text-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-gray-700/50 mt-8 pt-6 text-center">
+          <p className="text-gray-300 text-sm">
             © {currentYear} SMIRROR Solutions. All rights reserved.
           </p>
         </div>
