@@ -4,9 +4,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-white py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="geometric-bg absolute inset-0 -z-10"></div>
-      <div className="max-w-6xl mx-auto relative z-10">
+    <footer className="text-white py-8 px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
