@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CodeBracketIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +29,21 @@ export default function Navigation() {
             className="group relative"
             aria-label="SMIRROR Solutions Home"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span className="text-2xl font-bold text-white tracking-tight">
                 SMIRROR
               </span>
-              <CodeBracketIcon className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+              <Image
+                src="/SM.ICON.png"
+                alt="SMIRROR Icon"
+                width={24}
+                height={24}
+                className="object-contain group-hover:scale-110 transition-transform duration-300"
+                onError={(e) => {
+                  // Fallback to a simple dot if image fails to load
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
             </div>
             <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></div>
           </Link>
