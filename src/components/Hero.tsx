@@ -17,6 +17,7 @@ export default function Hero() {
     <section
       className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden"
       aria-labelledby="hero-heading"
+      suppressHydrationWarning
     >
       {/* Referral Widget */}
       <ReferralWidget />
