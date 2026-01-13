@@ -34,52 +34,25 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
-            {/* Content with Image and Text Side by Side */}
-            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-8">
-              {/* Hero Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex-shrink-0"
-              >
-                <div className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group">
-                  <Image
-                    src="/SM.ICON.png"
-                    alt="SMIRROR Hero Image"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              </motion.div>
+            {/* Main Headline */}
+            <h1
+              id="hero-heading"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
+            >
+              <span className="block">Professional Web</span>
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Development
+              </span>
+              <span className="block text-xl sm:text-2xl lg:text-3xl font-medium mt-4 text-gray-300">
+                That Lets You Relax
+              </span>
+            </h1>
 
-              {/* Text Content */}
-              <div className="flex-1 text-center lg:text-left">
-                {/* Main Headline */}
-                <h1
-                  id="hero-heading"
-                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
-                >
-                  <span className="block">Professional Web</span>
-                  <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                    Development
-                  </span>
-                  <span className="block text-lg sm:text-xl lg:text-2xl font-medium mt-4 text-gray-300">
-                    That Lets You Relax
-                  </span>
-                </h1>
-
-                {/* Subheadline */}
-                <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  We handle everything - from websites to complex web apps.
-                  You focus on your business, we manage the technology.
-                </p>
-              </div>
-            </div>
+            {/* Subheadline */}
+            <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              We handle everything - from websites to complex web apps.
+              You focus on your business, we manage the technology.
+            </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
@@ -144,90 +117,73 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Side - Visual/Illustration */}
+          {/* Right Side - Hero Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative"
+            className="relative flex justify-center items-center"
           >
-            {/* Main Illustration */}
-            <div className="relative w-full max-w-lg mx-auto">
+            {/* Main Hero Image */}
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative max-w-md mx-auto"
+            >
               {/* Animated Background Elements */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-lg animate-pulse delay-1000"></div>
+              <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-lg animate-pulse delay-1000"></div>
 
-              {/* Central Illustration */}
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl"
-              >
-                {/* Mock Dashboard/Development Interface */}
-                <div className="space-y-6">
-                  {/* Header */}
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-lg"></div>
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                    </div>
-                  </div>
+              {/* Hero Image */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+                <Image
+                  src="/SM.ICON.png"
+                  alt="SMIRROR Hero Image"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                  {/* Content Blocks */}
-                  <div className="space-y-4">
-                    <div className="h-4 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-lg"></div>
-                    <div className="h-3 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-lg w-3/4"></div>
-                    <div className="h-4 bg-gradient-to-r from-green-400/30 to-blue-400/30 rounded-lg"></div>
-                    <div className="h-3 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-lg w-5/6"></div>
-                  </div>
+                {/* Floating Elements */}
+                <motion.div
+                  animate={{
+                    rotate: [0, 5, -5, 0],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute top-4 -left-6 w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl opacity-80 shadow-lg"
+                >
+                  <div className="w-full h-full flex items-center justify-center text-white text-base">⚡</div>
+                </motion.div>
 
-                  {/* Code-like elements */}
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-300"></div>
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-700"></div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating Elements */}
-              <motion.div
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-4 -left-8 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl opacity-80 shadow-lg"
-              >
-                <div className="w-full h-full flex items-center justify-center text-white text-lg">⚡</div>
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  rotate: [0, -3, 3, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-                className="absolute bottom-4 -right-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl opacity-80 shadow-lg"
-              >
-                <div className="w-full h-full flex items-center justify-center text-white text-sm">🚀</div>
-              </motion.div>
-            </div>
+                <motion.div
+                  animate={{
+                    rotate: [0, -3, 3, 0],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                  className="absolute bottom-4 -right-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl opacity-80 shadow-lg"
+                >
+                  <div className="w-full h-full flex items-center justify-center text-white text-xs">🚀</div>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
