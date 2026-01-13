@@ -1,8 +1,8 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const ReferralWidget = dynamic(() => import("./ReferralWidget"), {
@@ -18,7 +18,7 @@ export default function Hero() {
     <section
       className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden"
       aria-labelledby="hero-heading"
-      suppressHydrationWarning
+      suppressHydrationWarning={true}
     >
       {/* Referral Widget */}
       <ReferralWidget />
@@ -35,24 +35,12 @@ export default function Hero() {
             className="text-center lg:text-left"
           >
             {/* Main Headline */}
-            <h1
+            <div
               id="hero-heading"
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              <span className="block">Professional Web</span>
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Development
-              </span>
-              <span className="block text-xl sm:text-2xl lg:text-3xl font-medium mt-4 text-gray-300">
-                That Lets You Relax
-              </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              We handle everything - from websites to complex web apps.
-              You focus on your business, we manage the technology.
-            </p>
+              Who We Are
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
@@ -126,79 +114,11 @@ export default function Hero() {
           >
             {/* Floating Modal Background */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 1, -1, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-pink-500/10 rounded-full blur-2xl"
-              ></motion.div>
+              <div className="w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-pink-500/10 rounded-full blur-2xl"></div>
             </div>
 
             {/* Main Hero Image Container */}
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="relative z-10"
-            >
-              {/* Enhanced Floating Elements */}
-              <motion.div
-                animate={{
-                  rotate: [0, 10, -10, 0],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 7,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute -top-12 -left-12 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl opacity-90 shadow-2xl flex items-center justify-center"
-              >
-                <div className="text-2xl">⚡</div>
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  rotate: [0, -8, 8, 0],
-                  scale: [1, 1.15, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-                className="absolute -bottom-10 -right-10 w-14 h-14 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl opacity-90 shadow-2xl flex items-center justify-center"
-              >
-                <div className="text-xl">🚀</div>
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                  x: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 9,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 2
-                }}
-                className="absolute top-1/2 -right-16 w-12 h-12 bg-gradient-to-br from-green-400 to-blue-400 rounded-xl opacity-85 shadow-xl flex items-center justify-center"
-              >
-                <div className="text-lg">💎</div>
-              </motion.div>
+            <div className="relative z-10">
 
               {/* Hero Image in Modal Frame */}
               <div className="relative">
@@ -231,7 +151,7 @@ export default function Hero() {
                   <div className="text-white/70 text-sm font-medium">SMIRROR LTD</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
 

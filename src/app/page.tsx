@@ -6,7 +6,7 @@ import HeroBackground from "@/components/HeroBackground";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const Hero = dynamic(() => import("@/components/Hero"));
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
 
 export default function Home() {
   return (
