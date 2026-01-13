@@ -90,7 +90,7 @@ export default function WhoWeAreModal({ isOpen, onClose }: WhoWeAreModalProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                className="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center hover:border-gray-600 transition-all duration-300 group"
+                className="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center hover:border-blue-500/50 transition-all duration-300 group"
               >
                 <h5 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">{value.title}</h5>
                 <p className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300">{value.desc}</p>
@@ -104,7 +104,7 @@ export default function WhoWeAreModal({ isOpen, onClose }: WhoWeAreModalProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-lg p-6 border border-blue-500/20"
+          className="bg-gray-800/50 rounded-lg p-6 border border-blue-500/30"
         >
           <h4 className="text-2xl font-bold text-white mb-4">Our Mission</h4>
           <p className="text-xl text-gray-300 leading-relaxed">

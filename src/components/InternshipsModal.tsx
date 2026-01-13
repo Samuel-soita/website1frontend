@@ -87,7 +87,7 @@ export default function InternshipsModal({ isOpen, onClose }: InternshipsModalPr
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-8"
+          className="bg-gray-800/50 border border-blue-500/30 rounded-xl p-8"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -254,7 +254,7 @@ export default function InternshipsModal({ isOpen, onClose }: InternshipsModalPr
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-8"
+          className="text-center bg-gray-800/50 border border-blue-500/30 rounded-xl p-8"
         >
           <h4 className="text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h4>
           <p className="text-xl text-gray-300 mb-6">

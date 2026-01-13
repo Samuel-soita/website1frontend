@@ -46,7 +46,7 @@ export default function MissionValuesModal({ isOpen, onClose }: MissionValuesMod
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-8">
+          <div className="bg-gray-800/50 border border-blue-500/30 rounded-xl p-8">
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
@@ -68,7 +68,7 @@ export default function MissionValuesModal({ isOpen, onClose }: MissionValuesMod
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-xl p-8">
+          <div className="bg-gray-800/50 border border-purple-500/30 rounded-xl p-8">
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
@@ -109,7 +109,7 @@ export default function MissionValuesModal({ isOpen, onClose }: MissionValuesMod
                 scale: 1.02,
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
-              className="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center hover:border-gray-600 transition-all duration-300 cursor-pointer group"
+              className="bg-gray-800/50 border border-gray-700 rounded-lg p-6 text-center hover:border-blue-500/50 transition-all duration-300 cursor-pointer group"
             >
               <div className={`absolute inset-0 bg-gradient-to-r from-${value.color === 'from-yellow-500 to-orange-500' ? 'orange' : value.color === 'from-blue-500 to-purple-500' ? 'blue' : value.color === 'from-green-500 to-teal-500' ? 'green' : 'purple'}-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 <div className={`text-3xl mb-3 group-hover:scale-110 transition-transform duration-300`}>{value.icon}</div>
@@ -178,7 +178,7 @@ export default function MissionValuesModal({ isOpen, onClose }: MissionValuesMod
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-lg p-6 border border-gray-600"
+          className="text-center bg-gray-800/50 rounded-lg p-6 border border-blue-500/30"
         >
           <p className="text-lg text-gray-300 italic mb-4">
             "Our values aren't just words on a page—they're the foundation of everything we build and every relationship we nurture.

@@ -62,7 +62,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center hover:border-gray-600 transition-all duration-300 group"
+                className="bg-gray-800/50 border border-gray-700 rounded-lg p-4 text-center hover:border-blue-500/50 transition-all duration-300 group"
               >
                 <div className="text-2xl font-bold text-blue-400 mb-1 group-hover:text-blue-300 transition-colors duration-300">{stat.number}</div>
                 <div className="text-gray-300 text-sm group-hover:text-gray-200 transition-colors duration-300">{stat.label}</div>
@@ -90,7 +90,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                className="bg-gray-800/40 border border-gray-700 rounded-lg p-3 text-center hover:border-gray-600 hover:bg-gray-800/60 transition-all duration-300 group"
+                className="bg-gray-800/40 border border-gray-700 rounded-lg p-3 text-center hover:border-blue-500/50 hover:bg-gray-800/60 transition-all duration-300 group"
               >
                 <div className="text-white font-medium text-sm group-hover:text-blue-400 transition-colors duration-300">{tech}</div>
               </motion.div>
@@ -103,7 +103,7 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-lg p-6 border border-blue-500/20"
+          className="text-center bg-gray-800/50 rounded-lg p-6 border border-blue-500/30"
         >
           <p className="text-lg text-gray-300 italic">
             "Our journey began with a simple belief: technology should empower, not complicate. Today, we're building the future of digital transformation,
