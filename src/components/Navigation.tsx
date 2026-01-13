@@ -34,8 +34,8 @@ export default function Navigation() {
               <Image
                 src="/SM.ICON.png"
                 alt="SMIRROR Icon"
-                width={48}
-                height={48}
+                width={56}
+                height={56}
                 className="object-contain group-hover:scale-110 transition-transform duration-300"
                 onError={(e) => {
                   // Fallback to a simple dot if image fails to load
