@@ -146,6 +146,8 @@ export default function Hero() {
                   src="/SM.ICON.png"
                   alt="SMIRROR Hero Image"
                   fill
+                  sizes="(max-width: 768px) 320px, 384px"
+                  loading="eager"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
