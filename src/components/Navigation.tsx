@@ -32,10 +32,10 @@ export default function Navigation() {
           >
             <div className="flex items-center gap-4">
               <Image
-                src="/SM.ICON.png"
+                src="/hover.jpeg"
                 alt="SMIRROR Icon"
-                width={56}
-                height={56}
+                width={64}
+                height={64}
                 className="object-contain group-hover:scale-110 transition-transform duration-300"
                 onError={(e) => {
                   // Fallback to a simple dot if image fails to load
