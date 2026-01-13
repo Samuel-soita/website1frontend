@@ -117,14 +117,30 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Side - Hero Image */}
+          {/* Right Side - Hero Image with Floating Modal */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative flex justify-center items-center"
           >
-            {/* Main Hero Image */}
+            {/* Floating Modal Background */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                animate={{
+                  scale: [1, 1.05, 1],
+                  rotate: [0, 1, -1, 0],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="w-96 h-96 lg:w-[28rem] lg:h-[28rem] bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-pink-500/10 rounded-full blur-2xl"
+              ></motion.div>
+            </div>
+
+            {/* Main Hero Image Container */}
             <motion.div
               animate={{
                 y: [0, -10, 0],
@@ -134,56 +150,86 @@ export default function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative max-w-md mx-auto"
+              className="relative z-10"
             >
-              {/* Animated Background Elements */}
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-lg animate-pulse delay-1000"></div>
+              {/* Enhanced Floating Elements */}
+              <motion.div
+                animate={{
+                  rotate: [0, 10, -10, 0],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute -top-12 -left-12 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl opacity-90 shadow-2xl flex items-center justify-center"
+              >
+                <div className="text-2xl">⚡</div>
+              </motion.div>
 
-              {/* Hero Image */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
-                <Image
-                  src="/SM.ICON.png"
-                  alt="SMIRROR Hero Image"
-                  fill
-                  sizes="(max-width: 768px) 320px, 384px"
-                  loading="eager"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <motion.div
+                animate={{
+                  rotate: [0, -8, 8, 0],
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+                className="absolute -bottom-10 -right-10 w-14 h-14 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl opacity-90 shadow-2xl flex items-center justify-center"
+              >
+                <div className="text-xl">🚀</div>
+              </motion.div>
 
-                {/* Floating Elements */}
-                <motion.div
-                  animate={{
-                    rotate: [0, 5, -5, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute top-4 -left-6 w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl opacity-80 shadow-lg"
-                >
-                  <div className="w-full h-full flex items-center justify-center text-white text-base">⚡</div>
-                </motion.div>
+              <motion.div
+                animate={{
+                  rotate: [0, 5, -5, 0],
+                  x: [0, 5, -5, 0],
+                }}
+                transition={{
+                  duration: 9,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+                className="absolute top-1/2 -right-16 w-12 h-12 bg-gradient-to-br from-green-400 to-blue-400 rounded-xl opacity-85 shadow-xl flex items-center justify-center"
+              >
+                <div className="text-lg">💎</div>
+              </motion.div>
 
-                <motion.div
-                  animate={{
-                    rotate: [0, -3, 3, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                  className="absolute bottom-4 -right-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl opacity-80 shadow-lg"
-                >
-                  <div className="w-full h-full flex items-center justify-center text-white text-xs">🚀</div>
-                </motion.div>
+              {/* Hero Image in Modal Frame */}
+              <div className="relative">
+                {/* Modal Frame */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl rounded-3xl border border-white/30 shadow-2xl"></div>
+
+                {/* Image Container */}
+                <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group m-4">
+                  <Image
+                    src="/SM.ICON.png"
+                    alt="SMIRROR Hero Image"
+                    fill
+                    sizes="(max-width: 768px) 320px, 384px"
+                    loading="eager"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+
+                {/* Modal Header */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+                  <div className="flex space-x-2">
+                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <div className="text-white/70 text-sm font-medium">SMIRROR LTD</div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
