@@ -1,16 +1,16 @@
 "use client";
 
-import Hero from "@/components/Hero";
+import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
-import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
 import { motion } from "framer-motion";
+
+const Hero = dynamic(() => import("@/components/Hero"));
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Sidebar />
       <Hero />
 
       {/* Services Section */}

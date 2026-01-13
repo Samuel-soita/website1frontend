@@ -84,7 +84,7 @@ export default function ReferralWidget() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.5 }}
         onClick={() => setIsOpen(true)}
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-gray-800 hover:bg-gray-700 text-white px-1 py-6 rounded-l-lg shadow-2xl hover:shadow-gray-500/50 transition-all duration-500 group flex items-center justify-center"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-gradient-to-br from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-1.5 py-8 rounded-l-lg shadow-2xl hover:shadow-blue-500/50 transition-all duration-500 group flex items-center justify-center"
         style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
         whileHover={{ scale: 1.05 }}
       >
@@ -106,7 +106,7 @@ export default function ReferralWidget() {
           setShowForm(false);
           setIsSubmitted(false);
         }}
-        className="fixed inset-0 bg-black/60 z-50"
+        className="fixed inset-0 bg-black/50 z-50"
             />
 
             {/* Modal */}
@@ -115,7 +115,7 @@ export default function ReferralWidget() {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 400, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-gray-900 border-l border-gray-700 shadow-2xl z-50 overflow-y-auto"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-l border-gray-700 shadow-2xl z-50 overflow-y-auto"
             >
               <div className="sticky top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
@@ -327,7 +327,7 @@ export default function ReferralWidget() {
                       <button
                         type="button"
                         onClick={() => setShowForm(false)}
-                        className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
+                        className="flex-1 bg-gray-800/50 border border-gray-700 hover:bg-gray-800 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-300"
                       >
                         Back
                       </button>

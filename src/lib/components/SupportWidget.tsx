@@ -48,21 +48,21 @@ export default function SupportWidget() {
       title: "Live Chat",
       description: "Get instant help from our support team",
       action: "Start Chat",
-      color: "from-white to-gray-100"
+      color: "from-blue-600 to-blue-700"
     },
     {
       icon: EnvelopeIcon,
       title: "Email Support",
       description: "Send us an email and we'll respond within 24 hours",
       action: "Send Email",
-      color: "from-white to-gray-100"
+      color: "from-purple-600 to-purple-700"
     },
     {
       icon: PhoneIcon,
       title: "Phone Support",
       description: "Call us directly for immediate assistance",
       action: "Call Now",
-      color: "from-white to-gray-100"
+      color: "from-green-600 to-green-700"
     }
   ];
 
@@ -87,7 +87,7 @@ export default function SupportWidget() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 z-50"
+              className="fixed inset-0 bg-black/50 z-50"
             />
 
             {/* Modal */}
@@ -96,9 +96,9 @@ export default function SupportWidget() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl z-50 overflow-y-auto max-h-[90vh]"
+              className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 rounded-2xl shadow-2xl z-50 overflow-y-auto max-h-[90vh]"
             >
-              <div className="sticky top-0 bg-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
+              <div className="sticky top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                     <QuestionMarkCircleIcon className="w-5 h-5 text-white" />
@@ -321,7 +321,7 @@ export default function SupportWidget() {
                           <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-white hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed text-gray-900 px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
                           >
                             {isLoading ? 'Submitting...' : 'Submit Support Request'}
                           </button>
@@ -341,7 +341,7 @@ export default function SupportWidget() {
                             whileHover={{ y: -5, scale: 1.02 }}
                             className="bg-gradient-to-br from-gray-800/70 via-gray-800/60 to-gray-900/70 border border-gray-700 rounded-xl p-6 hover:border-blue-500/60 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 group cursor-pointer"
                           >
-                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${option.color} text-gray-900 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${option.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                               <Icon className="w-6 h-6 text-white" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
@@ -388,14 +388,14 @@ export default function SupportWidget() {
                       <div className="flex flex-wrap gap-3">
                         <a
                           href="mailto:samuelsoita79@gmail.com"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 rounded-lg text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all duration-300"
                         >
                           <EnvelopeIcon className="w-4 h-4" />
                           Email Us
                         </a>
                         <a
                           href="tel:+254768640343"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-100 text-gray-900 rounded-lg text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-semibold transition-all duration-300"
                         >
                           <PhoneIcon className="w-4 h-4" />
                           Call Us

@@ -87,7 +87,7 @@ export default function InternshipsModal({ isOpen, onClose }: InternshipsModalPr
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-gray-800/50 border border-blue-500/30 rounded-xl p-8"
+          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-8"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -254,7 +254,7 @@ export default function InternshipsModal({ isOpen, onClose }: InternshipsModalPr
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center bg-gray-800/50 border border-blue-500/30 rounded-xl p-8"
+          className="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl p-8"
         >
           <h4 className="text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h4>
           <p className="text-xl text-gray-300 mb-6">
@@ -264,14 +264,14 @@ export default function InternshipsModal({ isOpen, onClose }: InternshipsModalPr
             <Link
               href="#contact"
               onClick={onClose}
-              className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               Apply Now
             </Link>
             <Link
               href="#contact"
               onClick={onClose}
-              className="border border-gray-600 text-gray-400 hover:bg-gray-800 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
             >
               Learn More
             </Link>

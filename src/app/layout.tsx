@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
 import StructuredDataWrapper from "@/components/StructuredDataWrapper";
+import { TalkToUsProvider } from "@/contexts/TalkToUsContext";
+
+const Navigation = dynamic(() => import("@/components/Navigation"));
 
 const inter = Inter({
   subsets: ["latin"],
@@ -171,12 +174,14 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased text-white relative overflow-x-hidden`}
         style={{ backgroundColor: '#1a1a1a' }}
       >
-        <div className="geometric-bg fixed inset-0 -z-10" aria-hidden="true"></div>
-        <Navigation />
-        <StructuredDataWrapper />
-        <main className="relative z-10 pt-20" role="main">
-          {children}
-        </main>
+        <TalkToUsProvider>
+          <div className="geometric-bg fixed inset-0 -z-10" aria-hidden="true"></div>
+          <Navigation />
+          <StructuredDataWrapper />
+          <main className="relative z-10 pt-20" role="main">
+            {children}
+          </main>
+        </TalkToUsProvider>
       </body>
     </html>
   );

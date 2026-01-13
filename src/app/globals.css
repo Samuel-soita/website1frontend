@@ -45,14 +45,84 @@
   --smirror-cyan-400: #26c6da;
 }
 
-/* Smooth Grid Background - Visible Squares */
+/* Ultra-Smooth Gradient Background with Fluid Animations */
 .geometric-bg {
   background-color: #1a1a1a;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 20px 20px;
+    /* Subtle grid pattern */
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+
+    /* Smooth radial gradients for depth */
+    radial-gradient(ellipse 800px 600px at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 800px at 80% 20%, rgba(147, 51, 234, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 1000px 800px at 40% 80%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
+
+    /* Additional subtle layers */
+    radial-gradient(circle at 60% 60%, rgba(245, 158, 11, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(239, 68, 68, 0.02) 0%, transparent 60%);
+  background-size:
+    28px 28px, 28px 28px,
+    800px 600px, 600px 800px, 1000px 800px,
+    400px 400px, 500px 500px;
   background-attachment: fixed;
+  animation: fluid-gradient 25s ease-in-out infinite, subtle-pulse 15s ease-in-out infinite alternate;
+}
+
+/* Fluid gradient animations for ultra-smooth movement */
+@keyframes fluid-gradient {
+  0%, 100% {
+    background-position:
+      0 0, 0 0,
+      0 0, 0 0, 0 0,
+      0 0, 0 0;
+  }
+  25% {
+    background-position:
+      0 0, 0 0,
+      50px 30px, -40px 20px, 30px -50px,
+      25px 25px, -15px -20px;
+  }
+  50% {
+    background-position:
+      0 0, 0 0,
+      -30px -40px, 60px -10px, -20px 40px,
+      -35px 15px, 40px 30px;
+  }
+  75% {
+    background-position:
+      0 0, 0 0,
+      40px 20px, -50px 40px, 50px -30px,
+      20px -25px, -30px 35px;
+  }
+}
+
+/* Subtle pulse animation for added depth */
+@keyframes subtle-pulse {
+  0%, 100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.02) contrast(1.01);
+  }
+}
+
+/* Ultra-smooth transitions for premium feel */
+* {
+  transition-property: color, background-color, border-color, transform, box-shadow, opacity, filter;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: 400ms;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
 }
 
 body {

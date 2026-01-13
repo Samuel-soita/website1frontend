@@ -11,7 +11,6 @@ interface TalkToUsWidgetProps {
 }
 
 export default function TalkToUsWidget({ externalOpen, onClose, showButton = true }: TalkToUsWidgetProps = {}) {
-  const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -22,10 +21,6 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
     company: "",
     message: ""
   });
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Sync with external open state
   useEffect(() => {
@@ -95,16 +90,12 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
     });
   };
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <>
       {/* Floating Talk to Us Button - Round in Corner - Only show if showButton is true */}
       {showButton && (
         <motion.div
-          initial={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 2 }}
           className="fixed bottom-6 right-6 z-50"
@@ -112,7 +103,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
           onMouseLeave={() => setIsHovered(false)}
         >
         <motion.button
-          className="w-20 h-20 rounded-full bg-gray-800 hover:bg-gray-700 text-white shadow-2xl hover:shadow-gray-500/50 transition-all duration-500 group flex items-center justify-center"
+          className="w-20 h-20 rounded-full bg-gradient-to-br from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-2xl hover:shadow-green-500/50 transition-all duration-500 group flex items-center justify-center"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsFormOpen(true)}
@@ -140,7 +131,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
               
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white text-gray-900 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
                     <PhoneIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -152,7 +143,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white text-gray-900 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
                     <EnvelopeIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -164,7 +155,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white text-gray-900 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 flex items-center justify-center flex-shrink-0">
                     <MapPinIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -174,7 +165,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white text-gray-900 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-yellow-600 to-orange-600 flex items-center justify-center flex-shrink-0">
                     <ClockIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -206,7 +197,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleClose}
-              className="fixed inset-0 bg-black/60 z-50"
+              className="fixed inset-0 bg-black/50 z-50"
             />
 
             {/* Modal */}
@@ -215,11 +206,11 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 400, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-gray-900 border-l border-gray-700 shadow-2xl z-50 overflow-y-auto"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-l border-gray-700 shadow-2xl z-50 overflow-y-auto"
             >
-              <div className="sticky top-0 bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
+              <div className="sticky top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gray-700 text-white flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 flex items-center justify-center">
                     <PhoneIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
@@ -333,7 +324,7 @@ export default function TalkToUsWidget({ externalOpen, onClose, showButton = tru
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-green-500/30"
                     >
                       {isLoading ? 'Sending...' : 'Send Message'}
                     </button>

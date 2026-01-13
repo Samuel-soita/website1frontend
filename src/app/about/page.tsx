@@ -5,12 +5,10 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
-import Sidebar from "@/components/Sidebar";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      <Sidebar />
       <Navigation />
 
       <main className="pt-16">

@@ -93,7 +93,7 @@ export default function ContactCTA() {
           >
             <Link
               href="mailto:hello@smirror.solutions"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-3 group transform hover:scale-105"
+              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-3 group"
             >
               <EnvelopeIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Email: hello@smirror.solutions
