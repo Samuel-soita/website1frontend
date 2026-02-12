@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
 import Sidebar from "@/components/Sidebar";
@@ -37,7 +36,6 @@ export default function VisionPage() {
   return (
     <div className="min-h-screen">
       <Sidebar />
-      <Navigation />
 
       <main className="pt-16">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -99,8 +97,8 @@ export default function VisionPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 + index * 0.1, ease: [0.23, 1, 0.32, 1] }}
-                    whileHover={{ 
-                      y: -8, 
+                    whileHover={{
+                      y: -8,
                       scale: 1.04,
                       transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] }
                     }}

@@ -11,17 +11,18 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
-    { href: '/projects', label: 'Projects' }
+    { href: '/projects', label: 'Projects' },
+    { href: '/collaborate', label: 'For Collaborators' }
   ];
 
   return (
-        <nav
-          className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-700/30"
-          style={{ backgroundColor: '#1a1a1a' }}
-          role="navigation"
-          aria-label="Main navigation"
-          suppressHydrationWarning
-        >
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-gray-700/30"
+      style={{ backgroundColor: '#1a1a1a' }}
+      role="navigation"
+      aria-label="Main navigation"
+      suppressHydrationWarning
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -64,12 +65,12 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="#contact"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm"
-              aria-label="Get consultation - Contact us"
-              title="Get Consultation"
+              href="/start-project"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/40 hover:-translate-y-0.5"
+              aria-label="Start a Project"
+              title="Start a Project"
             >
-              Get Consultation
+              Start a Project
             </Link>
           </div>
 
@@ -114,13 +115,13 @@ export default function Navigation() {
                 ))}
                 <div className="border-t border-gray-700/50 pt-3 mt-4">
                   <Link
-                    href="#contact"
+                    href="/start-project"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block w-full bg-gray-800 hover:bg-gray-700 text-white px-4 py-3 rounded-lg font-semibold text-center"
+                    className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3 rounded-lg font-semibold text-center shadow-lg"
                     role="menuitem"
-                    aria-label="Get consultation - Contact us"
+                    aria-label="Start a Project"
                   >
-                    Get Consultation
+                    Start a Project
                   </Link>
                 </div>
               </div>

@@ -2,14 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Navigation from "@/components/Navigation";
+// Navigation is in layout
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
 
 export default function Projects() {
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       <main className="pt-16">
         <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">

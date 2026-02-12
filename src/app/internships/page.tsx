@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
 import Sidebar from "@/components/Sidebar";
@@ -100,7 +99,6 @@ export default function InternshipsPage() {
   return (
     <div className="min-h-screen">
       <Sidebar />
-      <Navigation />
 
       <main className="pt-16">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -131,8 +129,8 @@ export default function InternshipsPage() {
                   Launch Your Tech Career
                 </h2>
                 <p className="text-gray-300 text-lg leading-relaxed mb-8 group-hover:text-gray-100 transition-colors duration-700">
-                  Our internship program is designed to bridge the gap between academic learning and real-world industry experience. 
-                  We provide hands-on training, mentorship, and the opportunity to work on actual projects that prepare you for 
+                  Our internship program is designed to bridge the gap between academic learning and real-world industry experience.
+                  We provide hands-on training, mentorship, and the opportunity to work on actual projects that prepare you for
                   success in the job market.
                 </p>
 

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
 import Sidebar from "@/components/Sidebar";
@@ -53,7 +52,6 @@ export default function CareersPage() {
   return (
     <div className="min-h-screen">
       <Sidebar />
-      <Navigation />
 
       <main className="pt-16">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">

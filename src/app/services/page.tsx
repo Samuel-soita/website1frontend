@@ -1,10 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import HeroBackground from "@/components/HeroBackground";
+
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const HeroBackground = dynamic(() => import("@/components/HeroBackground"), { ssr: false });
 
 export default function ServicesPage() {
   const coreServices = [
@@ -36,6 +37,11 @@ export default function ServicesPage() {
       title: "Embedded Software Development",
       description: "Designing and programming software for dedicated hardware systems, often found in devices and IoT.",
       examples: ["Firmware for smart devices", "Automotive systems", "Industrial control systems"]
+    },
+    {
+      title: "Software Consulting & Strategy",
+      description: "Providing expert advice on technology choices, system architecture, digital transformation, and software roadmap planning.",
+      examples: ["Feasibility studies", "Market research", "Competitor analysis", "Technology stack recommendations"]
     }
   ];
 
@@ -85,54 +91,43 @@ export default function ServicesPage() {
     }
   ];
 
-  const ServiceCard = ({ service, index, colorClass, borderColor }: { service: any; index: number; colorClass: string; borderColor: string }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] }}
-      whileHover={{
-        y: -8,
-        scale: 1.03,
-        transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] }
-      }}
-      className="bg-gradient-to-br from-gray-800/70 via-gray-800/60 to-gray-900/70 border border-gray-700/60 rounded-2xl p-9 shadow-xl hover:border-blue-500/60 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group relative overflow-hidden backdrop-blur-sm"
-    >
-      <div className={`absolute inset-0 ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl`}></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
-      <div className="relative z-10">
-        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-700">
-          {service.title}
-        </h3>
-        <p className="text-gray-300 text-base leading-relaxed mb-5 group-hover:text-gray-100 transition-colors duration-700">
-          {service.description}
-        </p>
-        {service.examples && (
-          <div className="space-y-2">
-            <p className="text-sm font-semibold text-gray-400 mb-3 group-hover:text-gray-300 transition-colors duration-700">Examples:</p>
-            <ul className="space-y-2">
-              {service.examples.map((example: string, idx: number) => (
-                <motion.li
-                  key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 + idx * 0.05 }}
-                  whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                  className="flex items-start text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-700 group/item"
-                >
-                  <span className={`text-blue-400 mr-3 mt-1 text-base group-hover/item:scale-125 transition-transform duration-300`}>▸</span>
-                  <span>{example}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
+  const ServiceCard = ({ service, index, colorClass, borderColor }: { service: any; index: number; colorClass: string; borderColor: string }) => {
+    // Calculate slide direction based on index (alternating left/right)
+    const slideDirection = index % 2 === 0 ? -80 : 80;
+    const slideDelay = 0.2 + (index * 0.15);
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, x: slideDirection, scale: 0.9 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{
+          duration: 1.0,
+          delay: slideDelay,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          scale: { duration: 0.6, delay: slideDelay + 0.2 }
+        }}
+        whileHover={{
+          y: -12,
+          scale: 1.05,
+          rotateY: 2,
+          transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+        }}
+        className="bg-gradient-to-br from-gray-800/70 via-gray-800/60 to-gray-900/70 border border-gray-700/60 rounded-xl p-6 shadow-xl hover:border-blue-500/60 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group relative overflow-hidden backdrop-blur-sm cursor-pointer h-full flex flex-col"
+      >
+        <div className={`absolute inset-0 ${colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl`}></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-xl"></div>
+        <div className="relative z-10 text-center">
+          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-700">
+            {service.title}
+          </h3>
+          <div className="w-12 h-1 bg-gradient-to-r from-blue-400/0 via-blue-400/60 to-blue-400/0 mx-auto rounded-full group-hover:from-blue-400 group-hover:to-blue-400 transition-all duration-700"></div>
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       <main className="pt-16">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -145,96 +140,158 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* Core Software Development Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-16"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="h-1 w-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">I. Core Software Development Services</h2>
-                <div className="h-1 flex-1 bg-gradient-to-l from-blue-600 to-purple-600 rounded-full"></div>
-              </div>
-              <p className="text-gray-300 mb-8 text-lg max-w-4xl">
-                Fundamental services related to building software from scratch or enhancing existing systems.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {coreServices.map((service, index) => (
-                  <ServiceCard key={service.title} service={service} index={index} colorClass="bg-gradient-to-r from-blue-600/0 via-blue-600/10 to-purple-600/0" borderColor="blue" />
-                ))}
-              </div>
-            </motion.div>
+            {/* Service Category Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+              {/* Core Software Development Services */}
+              <motion.div
+                initial={{ opacity: 0, x: -80, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.2,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  scale: { duration: 0.8, delay: 0.4 }
+                }}
+                whileHover={{
+                  y: -15,
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+                }}
+                className="bg-gradient-to-br from-gray-800/80 via-gray-800/70 to-gray-900/80 border border-gray-700/70 rounded-2xl p-8 shadow-2xl hover:border-blue-500/60 hover:bg-gray-800/90 hover:shadow-3xl hover:shadow-blue-500/30 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group relative overflow-hidden backdrop-blur-sm"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-blue-600/15 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+                      <span className="text-2xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors duration-700">I</span>
+                    </div>
+                    <h2 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-700">Core Development</h2>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-6 group-hover:text-gray-100 transition-colors duration-700 text-center">
+                    Building software from scratch or enhancing existing systems.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {coreServices.slice(0, 4).map((service, index) => (
+                      <ServiceCard key={service.title} service={service} index={index} colorClass="bg-gradient-to-r from-blue-600/0 via-blue-600/10 to-purple-600/0" borderColor="blue" />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
 
-            {/* Pre-Development & Design Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-16"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="h-1 w-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">II. Pre-Development & Design Services</h2>
-                <div className="h-1 flex-1 bg-gradient-to-l from-purple-600 to-pink-600 rounded-full"></div>
-              </div>
-              <p className="text-gray-300 mb-8 text-lg max-w-4xl">
-                Services that lay the groundwork before coding begins.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {preDevelopmentServices.map((service, index) => (
-                  <ServiceCard key={service.title} service={service} index={index} colorClass="bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-pink-600/0" borderColor="purple" />
-                ))}
-              </div>
-            </motion.div>
+              {/* Pre-Development & Design Services */}
+              <motion.div
+                initial={{ opacity: 0, y: -80, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  scale: { duration: 0.8, delay: 0.8 }
+                }}
+                whileHover={{
+                  y: -15,
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+                }}
+                className="bg-gradient-to-br from-gray-800/80 via-gray-800/70 to-gray-900/80 border border-gray-700/70 rounded-2xl p-8 shadow-2xl hover:border-purple-500/60 hover:bg-gray-800/90 hover:shadow-3xl hover:shadow-purple-500/30 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group relative overflow-hidden backdrop-blur-sm"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/15 to-pink-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+                      <span className="text-2xl font-bold text-purple-400 group-hover:text-purple-300 transition-colors duration-700">II</span>
+                    </div>
+                    <h2 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-700">Pre-Development</h2>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-6 group-hover:text-gray-100 transition-colors duration-700 text-center">
+                    Planning and design services that lay the groundwork before coding begins.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {preDevelopmentServices.slice(0, 4).map((service, index) => (
+                      <ServiceCard key={service.title} service={service} index={index + 6} colorClass="bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-pink-600/0" borderColor="purple" />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
 
-            {/* Post-Development & Support Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-16"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="h-1 w-20 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full"></div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white">III. Post-Development & Support Services</h2>
-                <div className="h-1 flex-1 bg-gradient-to-l from-green-600 to-emerald-600 rounded-full"></div>
-              </div>
-              <p className="text-gray-300 mb-8 text-lg max-w-4xl">
-                Services provided after the initial development phase.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {postDevelopmentServices.map((service, index) => (
-                  <ServiceCard key={service.title} service={service} index={index} colorClass="bg-gradient-to-r from-green-600/0 via-green-600/10 to-emerald-600/0" borderColor="green" />
-                ))}
-              </div>
-            </motion.div>
+              {/* Post-Development & Support Services */}
+              <motion.div
+                initial={{ opacity: 0, x: 80, scale: 0.9 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                transition={{
+                  duration: 1.2,
+                  delay: 1.0,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  scale: { duration: 0.8, delay: 1.2 }
+                }}
+                whileHover={{
+                  y: -15,
+                  scale: 1.02,
+                  transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+                }}
+                className="bg-gradient-to-br from-gray-800/80 via-gray-800/70 to-gray-900/80 border border-gray-700/70 rounded-2xl p-8 shadow-2xl hover:border-green-500/60 hover:bg-gray-800/90 hover:shadow-3xl hover:shadow-green-500/30 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group relative overflow-hidden backdrop-blur-sm"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600/0 via-green-600/15 to-emerald-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-600/20 flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+                      <span className="text-2xl font-bold text-green-400 group-hover:text-green-300 transition-colors duration-700">III</span>
+                    </div>
+                    <h2 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors duration-700">Post-Development</h2>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-6 group-hover:text-gray-100 transition-colors duration-700 text-center">
+                    Ongoing support and services provided after the initial development phase.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {postDevelopmentServices.slice(0, 4).map((service, index) => (
+                      <ServiceCard key={service.title} service={service} index={index + 10} colorClass="bg-gradient-to-r from-green-600/0 via-green-600/10 to-emerald-600/0" borderColor="green" />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
 
-            {/* Call to Action */}
+            {/* Call to Action Card */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-gradient-to-br from-blue-600/10 via-blue-600/10 to-purple-600/10 backdrop-blur-sm rounded-2xl p-9 shadow-lg border border-blue-500/30 text-center"
+              initial={{ opacity: 0, y: 80, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 1.4,
+                delay: 1.4,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                scale: { duration: 1.0, delay: 1.6 }
+              }}
+              whileHover={{
+                y: -10,
+                scale: 1.01,
+                transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+              }}
+              className="bg-gradient-to-br from-gray-800/80 via-gray-800/70 to-gray-900/80 border border-gray-700/70 rounded-2xl p-8 shadow-2xl hover:border-blue-500/60 hover:bg-gray-800/90 hover:shadow-3xl hover:shadow-blue-500/30 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group relative overflow-hidden backdrop-blur-sm max-w-4xl mx-auto text-center"
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                Let's discuss your project and find the perfect solution for your business needs.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="#contact"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg"
-                >
-                  Request a Consultation
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-block border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-500 transform hover:scale-105"
-                >
-                  Learn More About Us
-                </Link>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-blue-600/15 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl"></div>
+              <div className="relative z-10">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-700">Ready to Get Started?</h2>
+                <p className="text-gray-300 text-base mb-6 group-hover:text-gray-100 transition-colors duration-700 max-w-2xl mx-auto">
+                  Let's discuss your project and find the perfect solution for your business needs.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link
+                    href="#contact"
+                    className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg text-base font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg"
+                  >
+                    Request Consultation
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="inline-block border border-gray-600 hover:border-blue-500 text-gray-300 hover:text-white px-6 py-3 rounded-lg text-base font-semibold transition-all duration-500 transform hover:scale-105"
+                  >
+                    Learn More
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>
