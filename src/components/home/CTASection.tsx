@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function CTASection() {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <section className="py-32 px-4 sm:px-6 lg:px-8 relative bg-transparent overflow-hidden">
             {/* The "Event Horizon" Background - Reduced opacity to blend with geometric-bg */}
@@ -12,7 +19,7 @@ export default function CTASection() {
 
                 {/* Animated Particles / Lines */}
                 <div className="absolute inset-0 opacity-10">
-                    {[...Array(20)].map((_, i) => (
+                    {mounted && [...Array(20)].map((_, i) => (
                         <motion.div
                             key={i}
                             className="absolute bg-white/40 h-px"
