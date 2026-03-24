@@ -1,0 +1,49 @@
+nohup: ignoring input
+
+> frontend@0.1.0 dev
+> next dev
+
+⚠ turbopack.root should be absolute, using: /home/samuel-soita/Development/STARTUP/Mainwebsite/frontend
+▲ Next.js 16.1.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.113:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 3s
+○ Compiling / ...
+ GET / 200 in 7.3s (compile: 5.6s, render: 1742ms)
+ HEAD / 200 in 807ms (compile: 666ms, render: 142ms)
+ GET / 200 in 175ms (compile: 11ms, render: 165ms)
+✓ Compiled in 3.5s
+ GET / 200 in 528ms (compile: 103ms, render: 426ms)
+ GET /services 200 in 2.1s (compile: 1920ms, render: 175ms)
+ GET /services 200 in 125ms (compile: 11ms, render: 113ms)
+ GET /services 200 in 67ms (compile: 10ms, render: 57ms)
+ GET /projects 200 in 382ms (compile: 306ms, render: 76ms)
+ GET /collaborate 200 in 166ms (compile: 122ms, render: 44ms)
+ GET /about 200 in 172ms (compile: 130ms, render: 42ms)
+ GET /projects 200 in 52ms (compile: 7ms, render: 44ms)
+ GET /about 200 in 64ms (compile: 14ms, render: 50ms)
+ GET /who-we-are 200 in 1725ms (compile: 1633ms, render: 92ms)
+ GET /careers 200 in 1159ms (compile: 1096ms, render: 63ms)
+ GET /internships 200 in 967ms (compile: 911ms, render: 57ms)
+ GET /who-we-are 200 in 65ms (compile: 12ms, render: 52ms)
+ GET /who-we-are 200 in 278ms (compile: 9ms, render: 269ms)
+ GET /projects 200 in 48ms (compile: 6ms, render: 42ms)
+ GET /about 200 in 64ms (compile: 10ms, render: 54ms)
+ GET / 200 in 48ms (compile: 11ms, render: 37ms)
+ GET /start-project 200 in 474ms (compile: 404ms, render: 70ms)
+ GET /services 200 in 53ms (compile: 7ms, render: 45ms)
+ GET /about 200 in 45ms (compile: 6ms, render: 39ms)
+ GET / 200 in 61ms (compile: 9ms, render: 52ms)
+ GET /about 200 in 56ms (compile: 9ms, render: 47ms)
+ GET /services 200 in 56ms (compile: 8ms, render: 47ms)
+ GET /services 200 in 49ms (compile: 12ms, render: 36ms)
+ GET /about 200 in 58ms (compile: 9ms, render: 49ms)
+ GET /who-we-are 200 in 50ms (compile: 7ms, render: 43ms)
+ GET / 200 in 60ms (compile: 14ms, render: 47ms)
+ GET /services 200 in 54ms (compile: 8ms, render: 46ms)
+ GET /projects 200 in 74ms (compile: 12ms, render: 62ms)
+ GET /collaborate 200 in 63ms (compile: 10ms, render: 53ms)
+ GET / 200 in 70ms (compile: 14ms, render: 56ms)

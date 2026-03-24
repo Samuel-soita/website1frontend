@@ -2,31 +2,32 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const services = [
     {
-        title: "Custom Web Development",
-        desc: "High-performance websites and web applications tailored to your business goals.",
-        icon: null,
+        title: "Fintech (M-Pesa Ecosystem)",
+        desc: "Specialized engineering for East Africa's leading financial infrastructure. we build secure, scalable payment gateways and financial services.",
+        image: "/fintech_hero.png",
         gradient: "from-blue-600/20 to-blue-800/20",
         border: "border-blue-500/30",
-        details: ["Progressive Web Apps", "Enterprise Grade Security", "Global Real-time Sync"]
+        details: ["M-Pesa API Integration", "Secure Payment Vaults", "Real-time Settlement Systems"]
     },
     {
-        title: "Mobile App Development",
-        desc: "Native and cross-platform mobile apps that deliver seamless user experiences.",
-        icon: null,
+        title: "Startup Acceleration",
+        desc: "Elite talent matching and rapid development teams. We provide the technical backbone for fast-moving startups to hire and scale in weeks.",
+        image: "/hover.jpeg",
         gradient: "from-purple-600/20 to-purple-800/20",
         border: "border-purple-500/30",
-        details: ["iOS & Android Native", "Offline-First Logic", "Fluid Motion UI"]
+        details: ["Fast Hiring Pipelines", "MVP to Market in 30 Days", "Fractional CTO Support"]
     },
     {
-        title: "SaaS Product Engineering",
-        desc: "Scalable, secure, and multi-tenant software solutions built for growth.",
-        icon: null,
+        title: "Enterprise Remote SaaS",
+        desc: "Global-scale software solutions architected for remote reliability. We build the platforms that power modern, distributed businesses.",
+        image: "/saas_hero.png",
         gradient: "from-pink-600/20 to-pink-800/20",
         border: "border-pink-500/30",
-        details: ["Multi-tenant Architecture", "Subscription Engine", "Analytics Integration"]
+        details: ["Global Infrastructure", "Multi-region Sync", "Advanced Security Protocols"]
     }
 ];
 
@@ -68,18 +69,33 @@ export default function ServicesOverview() {
                             transition={{ delay: index * 0.1 }}
                             className="relative group cursor-pointer"
                         >
-                            <div className={`h-full p-10 rounded-[2.5rem] border transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${hoveredIndex === index
+                            <div className={`h-full p-10 rounded-[2.5rem] border transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] relative overflow-hidden ${hoveredIndex === index
                                 ? 'bg-white/5 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.05)] scale-105 z-20'
                                 : 'bg-transparent border-white/5 grayscale group-hover:grayscale-0'
                                 }`}>
-                                <h3 className={`text-2xl font-bold mb-4 transition-colors duration-500 ${hoveredIndex === index ? 'text-white' : 'text-gray-400'
-                                    }`}>
-                                    {service.title}
-                                </h3>
-                                <p className={`text-lg leading-relaxed mb-6 transition-all duration-500 ${hoveredIndex === index ? 'text-white opacity-100' : 'text-gray-600 opacity-60'
-                                    }`}>
-                                    {service.desc}
-                                </p>
+                                {/* Background Image */}
+                                {service.image && (
+                                    <div className={`absolute inset-0 z-0 transition-opacity duration-700 ${hoveredIndex === index ? 'opacity-20' : 'opacity-5'}`}>
+                                        <Image
+                                            src={service.image}
+                                            alt={service.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/40"></div>
+                                    </div>
+                                )}
+
+                                <div className="relative z-10">
+                                    <h3 className={`text-2xl font-bold mb-4 transition-colors duration-500 ${hoveredIndex === index ? 'text-white' : 'text-gray-400'
+                                        }`}>
+                                        {service.title}
+                                    </h3>
+                                    <p className={`text-lg leading-relaxed mb-6 transition-all duration-500 ${hoveredIndex === index ? 'text-white opacity-100' : 'text-gray-600 opacity-60'
+                                        }`}>
+                                        {service.desc}
+                                    </p>
+                                </div>
 
                                 <div className="mt-8">
                                     <AnimatePresence>

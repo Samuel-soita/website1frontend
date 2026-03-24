@@ -9,10 +9,10 @@ export default function Navigation() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/collaborate', label: 'For Collaborators' }
+    { href: '/projects', label: 'Global Work' },
+    { href: '/about', label: 'The Mirror' },
+    { href: '#contact', label: 'Get Consultation' }
   ];
 
   return (
@@ -31,21 +31,18 @@ export default function Navigation() {
             className="group relative"
             aria-label="SMIRROR Solutions Home"
           >
-            <div className="flex items-center gap-4">
-              <Image
-                src="/hover.jpeg"
-                alt="SMIRROR Icon"
-                width={64}
-                height={64}
-                loading="eager"
-                className="object-contain group-hover:scale-110 transition-transform duration-300"
-                onError={(e) => {
-                  // Fallback to a simple dot if image fails to load
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              <span className="text-xl font-bold text-white tracking-tight">
-                SMIRROR LTD
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden group-hover:border-white/20 transition-all duration-500">
+                <Image
+                  src="/hover.jpeg"
+                  alt="SMIRROR"
+                  width={40}
+                  height={40}
+                  className="object-cover group-hover:scale-125 transition-transform duration-700"
+                />
+              </div>
+              <span className="text-xl font-black text-white tracking-tighter uppercase">
+                Smirror
               </span>
             </div>
             <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></div>
@@ -65,12 +62,12 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/start-project"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/40 hover:-translate-y-0.5"
-              aria-label="Start a Project"
-              title="Start a Project"
+              href="#contact"
+              className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded-xl font-bold text-sm shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 active:scale-95 uppercase tracking-tight"
+              aria-label="Book a Discovery Call"
+              title="Book a Discovery Call"
             >
-              Start a Project
+              Book a Discovery
             </Link>
           </div>
 
@@ -115,13 +112,13 @@ export default function Navigation() {
                 ))}
                 <div className="border-t border-gray-700/50 pt-3 mt-4">
                   <Link
-                    href="/start-project"
+                    href="#contact"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3 rounded-lg font-semibold text-center shadow-lg"
+                    className="block w-full bg-white text-black hover:bg-gray-200 px-4 py-3 rounded-xl font-bold text-center shadow-lg uppercase tracking-tight"
                     role="menuitem"
-                    aria-label="Start a Project"
+                    aria-label="Book a Discovery Call"
                   >
-                    Start a Project
+                    Book a Discovery
                   </Link>
                 </div>
               </div>
