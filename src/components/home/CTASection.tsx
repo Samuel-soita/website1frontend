@@ -45,16 +45,13 @@ export default function CTASection() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="relative group">
-                    {/* Glowing Border Box */}
+                    {/* Main CTA Content Layout */}
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="rounded-[4rem] p-16 md:p-24 text-center border border-white/10 bg-white/[0.03] backdrop-blur-3xl relative overflow-hidden"
+                        className="py-16 md:py-24 text-center relative z-10"
                     >
-                        {/* Corner Accents */}
-                        <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-blue-500/50 rounded-tl-[4rem]"></div>
-                        <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-purple-500/50 rounded-br-[4rem]"></div>
 
                         <motion.div
                             initial={{ scale: 0.95 }}

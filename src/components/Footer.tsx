@@ -5,8 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#0d0d0d] border-t border-gray-800">
-      <div className="geometric-bg absolute inset-0 -z-10 bg-gray-900 opacity-20"></div>
+    <footer className="text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-transparent border-t border-gray-800">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Company Info */}

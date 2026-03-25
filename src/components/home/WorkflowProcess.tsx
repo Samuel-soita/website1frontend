@@ -31,7 +31,6 @@ const steps = [
 ];
 
 export default function WorkflowProcess() {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
         <section className="py-24 bg-transparent relative overflow-hidden">
@@ -56,73 +55,48 @@ export default function WorkflowProcess() {
                     {steps.map((step, index) => (
                         <motion.div
                             key={index}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             className="relative group h-full"
                         >
-                            <div className={`relative h-full p-10 rounded-[3rem] border transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${hoveredIndex === index
-                                ? 'bg-white/5 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.05)] scale-105 z-20'
-                                : 'bg-transparent border-white/5 grayscale group-hover:grayscale-0'
-                                }`}>
+                            <div className="relative h-full p-10 rounded-[3rem] bg-white/5 border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.05)] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-105 z-20">
                                 <div className="flex justify-between items-start mb-8">
-                                    <span className={`text-6xl font-black transition-colors duration-500 ${hoveredIndex === index ? 'text-white' : 'text-white/10'
-                                        }`}>
+                                    <span className="text-6xl font-black text-white">
                                         {step.id}
                                     </span>
                                 </div>
 
-                                <h3 className={`text-3xl font-bold mb-6 transition-all duration-500 ${hoveredIndex === index ? 'text-white translate-x-2' : 'text-gray-400 translate-x-0'
-                                    }`}>
+                                <h3 className="text-3xl font-bold mb-6 text-white">
                                     {step.title}
                                 </h3>
 
-                                <p className={`text-lg leading-relaxed transition-all duration-500 ${hoveredIndex === index ? 'text-white opacity-100' : 'text-gray-600 opacity-60'
-                                    }`}>
+                                <p className="text-lg leading-relaxed text-white opacity-100">
                                     {step.desc}
                                 </p>
 
                                 <div className="mt-8">
-                                    <AnimatePresence>
-                                        {hoveredIndex === index && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.4 }}
-                                                className="space-y-3 overflow-hidden"
+                                    <div className="space-y-3">
+                                        <div className="h-px w-1/2 bg-gradient-to-r from-white/20 to-transparent mb-4" />
+                                        {step.details.map((detail, dIndex) => (
+                                            <div
+                                                key={dIndex}
+                                                className="flex items-center gap-3 text-blue-400 font-mono text-xs tracking-wider"
                                             >
-                                                <div className="h-px w-1/2 bg-gradient-to-r from-white/20 to-transparent mb-4" />
-                                                {step.details.map((detail, dIndex) => (
-                                                    <motion.div
-                                                        key={dIndex}
-                                                        initial={{ x: -20, opacity: 0 }}
-                                                        animate={{ x: 0, opacity: 1 }}
-                                                        transition={{ delay: dIndex * 0.1 }}
-                                                        className="flex items-center gap-3 text-blue-400 font-mono text-xs tracking-wider"
-                                                    >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]" />
-                                                        {detail}
-                                                    </motion.div>
-                                                ))}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]" />
+                                                {detail}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
 
-                                {hoveredIndex === index && (
-                                    <motion.div
-                                        layoutId="pulse"
-                                        className="absolute inset-x-0 -bottom-4 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-sm"
-                                    />
-                                )}
+                                <div
+                                    className="absolute inset-x-0 -bottom-4 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent blur-sm"
+                                />
                             </div>
 
-                            <div className={`absolute -inset-2 bg-gradient-to-br ${step.color} blur-[100px] opacity-0 transition-opacity duration-700 ${hoveredIndex === index ? 'opacity-10' : ''
-                                }`} />
+                            <div className={`absolute -inset-2 bg-gradient-to-br ${step.color} blur-[100px] opacity-10 transition-opacity duration-700`} />
                         </motion.div>
                     ))}
                 </div>

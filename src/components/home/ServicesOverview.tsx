@@ -32,7 +32,6 @@ const services = [
 ];
 
 export default function ServicesOverview() {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
         <section className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent relative overflow-hidden">
@@ -61,78 +60,58 @@ export default function ServicesOverview() {
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             className="relative group cursor-pointer"
                         >
-                            <div className={`h-full p-10 rounded-[2.5rem] border transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] relative overflow-hidden ${hoveredIndex === index
-                                ? 'bg-white/5 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.05)] scale-105 z-20'
-                                : 'bg-transparent border-white/5 grayscale group-hover:grayscale-0'
-                                }`}>
+                            <div className="h-full p-10 rounded-[2.5rem] bg-white/5 border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.05)] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] relative overflow-hidden hover:scale-105 z-20">
                                 {/* Background Image */}
                                 {service.image && (
-                                    <div className={`absolute inset-0 z-0 transition-opacity duration-700 ${hoveredIndex === index ? 'opacity-20' : 'opacity-5'}`}>
+                                    <div className="absolute inset-0 z-0 opacity-20 transition-opacity duration-700">
                                         <Image
                                             src={service.image}
                                             alt={service.title}
                                             fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
                                             className="object-cover"
                                         />
                                         <div className="absolute inset-0 bg-black/40"></div>
                                     </div>
                                 )}
 
-                                <div className="relative z-10">
-                                    <h3 className={`text-2xl font-bold mb-4 transition-colors duration-500 ${hoveredIndex === index ? 'text-white' : 'text-gray-400'
-                                        }`}>
+                                <div className="relative z-10 pl-2">
+                                    <h3 className="text-2xl font-bold mb-4 text-white">
                                         {service.title}
                                     </h3>
-                                    <p className={`text-lg leading-relaxed mb-6 transition-all duration-500 ${hoveredIndex === index ? 'text-white opacity-100' : 'text-gray-600 opacity-60'
-                                        }`}>
+                                    <p className="text-lg leading-relaxed mb-6 text-white opacity-100">
                                         {service.desc}
                                     </p>
                                 </div>
 
-                                <div className="mt-8">
-                                    <AnimatePresence>
-                                        {hoveredIndex === index && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.4 }}
-                                                className="space-y-4 overflow-hidden"
+                                <div className="mt-8 relative z-10 pl-2">
+                                    <div className="space-y-4">
+                                        <div className="h-px w-1/2 bg-gradient-to-r from-blue-500/50 to-transparent mb-4" />
+                                        {service.details.map((detail, dIndex) => (
+                                            <div
+                                                key={dIndex}
+                                                className="flex items-center gap-3 text-blue-400 font-mono text-sm tracking-tight"
                                             >
-                                                <div className="h-px w-1/2 bg-gradient-to-r from-blue-500/50 to-transparent mb-4" />
-                                                {service.details.map((detail, dIndex) => (
-                                                    <motion.div
-                                                        key={dIndex}
-                                                        initial={{ x: -20, opacity: 0 }}
-                                                        animate={{ x: 0, opacity: 1 }}
-                                                        transition={{ delay: dIndex * 0.1 }}
-                                                        className="flex items-center gap-3 text-blue-400 font-mono text-sm tracking-tight"
-                                                    >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]" />
-                                                        {detail}
-                                                    </motion.div>
-                                                ))}
-                                                <a href="/services" className="mt-6 text-white font-bold inline-flex items-center group">
-                                                    Explore Capability
-                                                    <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                                                </a>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]" />
+                                                {detail}
+                                            </div>
+                                        ))}
+                                        <a href="/services" className="mt-6 text-white font-bold inline-flex items-center group">
+                                            Explore Capability
+                                            <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Background Glow */}
-                            <div className={`absolute -inset-2 bg-gradient-to-br ${service.gradient} blur-[100px] opacity-0 transition-opacity duration-700 ${hoveredIndex === index ? 'opacity-10' : ''
-                                }`} />
+                            <div className={`absolute -inset-2 bg-gradient-to-br ${service.gradient} blur-[100px] opacity-10 transition-opacity duration-700`} />
                         </motion.div>
                     ))}
                 </div>

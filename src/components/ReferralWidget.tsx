@@ -6,7 +6,7 @@ import { XMarkIcon, ShareIcon, UserPlusIcon } from "@heroicons/react/24/outline"
 
 export default function ReferralWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     referrerName: "",
@@ -115,25 +115,23 @@ export default function ReferralWidget() {
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 400, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-lg bg-gray-900 border-l border-gray-700 shadow-2xl z-50 overflow-y-auto"
+              className="fixed right-0 top-[10%] bottom-[10%] w-full max-w-2xl bg-[#0a0a0a]/95 backdrop-blur-lg border border-white/10 rounded-l-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] z-50 overflow-y-auto"
             >
-              <div className="sticky top-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between z-10">
+              <div className="sticky top-0 bg-[#0a0a0a]/95 border-b border-white/10 px-6 py-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                    <UserPlusIcon className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                    <UserPlusIcon className="w-5 h-5 text-blue-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-white">Refer SMIRROR Solutions</h2>
-                    <p className="text-gray-400 text-xs">Help others discover our services</p>
+                    <h2 className="text-xl font-bold text-white tracking-tight">Partner Referral</h2>
                   </div>
                 </div>
                 <button
                   onClick={() => {
                     setIsOpen(false);
-                    setShowForm(false);
                     setIsSubmitted(false);
                   }}
-                  className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-all duration-300"
+                  className="p-2 text-gray-500 hover:text-white transition-colors"
                 >
                   <XMarkIcon className="w-5 h-5" />
                 </button>
@@ -154,189 +152,110 @@ export default function ReferralWidget() {
                     <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
                     <p className="text-gray-300">Your referral has been submitted successfully.</p>
                   </motion.div>
-                ) : !showForm ? (
-                  /* Refer Us Story */
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="space-y-6"
-                  >
-                    <div className="text-center mb-8">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center mx-auto mb-4">
-                        <ShareIcon className="w-10 h-10 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-white mb-3">Refer SMIRROR Solutions</h3>
-                      <p className="text-gray-300 text-lg">Help others discover exceptional development services</p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div className="bg-gradient-to-br from-gray-800/60 via-gray-800/50 to-gray-900/60 border border-gray-700/50 rounded-xl p-6">
-                        <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                          <span className="text-blue-400">💼</span>
-                          Why Refer Us?
-                        </h4>
-                        <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                          SMIRROR Solutions delivers professional development services that transform businesses. 
-                          We help companies build scalable web applications, modern APIs, and robust systems that drive growth.
-                        </p>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-gray-800/60 via-gray-800/50 to-gray-900/60 border border-gray-700/50 rounded-xl p-6">
-                        <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                          <span className="text-purple-400">🎯</span>
-                          What We Offer
-                        </h4>
-                        <ul className="space-y-2 text-gray-300 text-sm">
-                          <li className="flex items-start">
-                            <span className="text-blue-400 mr-2 mt-1">▸</span>
-                            <span>Full-stack web development (TypeScript, React, Node.js, Python)</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-blue-400 mr-2 mt-1">▸</span>
-                            <span>API development & integration services</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-blue-400 mr-2 mt-1">▸</span>
-                            <span>Database design & optimization</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-blue-400 mr-2 mt-1">▸</span>
-                            <span>IT consulting & technical expertise</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-blue-400 mr-2 mt-1">▸</span>
-                            <span>Professional team training programs</span>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="bg-gradient-to-br from-gray-800/60 via-gray-800/50 to-gray-900/60 border border-gray-700/50 rounded-xl p-6">
-                        <h4 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                          <span className="text-green-400">🤝</span>
-                          How Referrals Work
-                        </h4>
-                        <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                          Simply provide the company details below, and we'll reach out to introduce our services professionally. 
-                          We'll keep you updated on the progress and thank you for helping us grow our network.
-                        </p>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => setShowForm(true)}
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
-                    >
-                      Submit a Referral
-                    </button>
-                  </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     {error && (
                       <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
                         {error}
                       </div>
                     )}
-                    <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
-                        Your Name <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="referrerName"
-                        value={formData.referrerName}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                        placeholder="Enter your name"
-                      />
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Your Name <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="referrerName"
+                          value={formData.referrerName}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          placeholder="Enter your name"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Your Email <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          name="referrerEmail"
+                          value={formData.referrerEmail}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Company Name <span className="text-gray-500 font-normal">(The company you are referring)</span> <span className="text-red-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="companyName"
+                          value={formData.companyName}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          placeholder="Acme Corp"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Contact Person
+                        </label>
+                        <input
+                          type="text"
+                          name="contactName"
+                          value={formData.contactName}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          placeholder="(optional)"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Contact Email
+                        </label>
+                        <input
+                          type="email"
+                          name="contactEmail"
+                          value={formData.contactEmail}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                          placeholder="(optional)"
+                        />
+                      </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
-                        Your Email <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="referrerEmail"
-                        value={formData.referrerEmail}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
-                        Company to Refer <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="companyName"
-                        value={formData.companyName}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                        placeholder="Company name"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
-                        Contact Person Name
-                      </label>
-                      <input
-                        type="text"
-                        name="contactName"
-                        value={formData.contactName}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                        placeholder="Contact person name (optional)"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
-                        Contact Email
-                      </label>
-                      <input
-                        type="email"
-                        name="contactEmail"
-                        value={formData.contactEmail}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                        placeholder="contact@company.com (optional)"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-white mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Message
                       </label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        rows={4}
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                        rows={2}
+                        className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                         placeholder="Tell us why you're referring this company (optional)"
                       />
                     </div>
 
-                    <div className="flex gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setShowForm(false)}
-                        className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-6 py-4 rounded-lg font-semibold transition-all duration-300 shadow-sm hover:shadow-md"
-                      >
-                        Back
-                      </button>
+                    <div className="pt-2">
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30"
+                        className="w-full bg-blue-500 hover:bg-blue-400 text-white px-6 py-4 rounded-xl font-bold transition-all disabled:opacity-50"
                       >
-                        {isLoading ? 'Submitting...' : 'Submit Referral'}
+                        {isLoading ? 'Processing...' : 'Submit Referral'}
                       </button>
                     </div>
 
