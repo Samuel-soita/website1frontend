@@ -11,8 +11,7 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/projects', label: 'Global Work' },
-    { href: '/about', label: 'The Mirror' },
-    { href: '#contact', label: 'Get Consultation' }
+    { href: '/about', label: 'The Mirror' }
   ];
 
   return (
@@ -61,14 +60,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="#contact"
-              className="bg-white text-black hover:bg-gray-200 px-6 py-2.5 rounded-xl font-bold text-sm shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 hover:scale-105 active:scale-95 uppercase tracking-tight"
-              aria-label="Book a Discovery Call"
-              title="Book a Discovery Call"
-            >
-              Book a Discovery
-            </Link>
           </div>
 
           {/* Mobile Hamburger Menu Button - Right side */}
@@ -110,17 +101,6 @@ export default function Navigation() {
                     {item.label}
                   </Link>
                 ))}
-                <div className="border-t border-gray-700/50 pt-3 mt-4">
-                  <Link
-                    href="#contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block w-full bg-white text-black hover:bg-gray-200 px-4 py-3 rounded-xl font-bold text-center shadow-lg uppercase tracking-tight"
-                    role="menuitem"
-                    aria-label="Book a Discovery Call"
-                  >
-                    Book a Discovery
-                  </Link>
-                </div>
               </div>
             </div>
           )}

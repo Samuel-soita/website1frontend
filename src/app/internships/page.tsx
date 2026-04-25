@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
-import Sidebar from "@/components/Sidebar";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function InternshipsPage() {
@@ -98,9 +97,7 @@ export default function InternshipsPage() {
 
   return (
     <div className="min-h-screen">
-      <Sidebar />
-
-      <main className="pt-16">
+      <main className="pt-24 md:pt-32">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
           <HeroBackground />
           <div className="max-w-5xl mx-auto relative z-10">

@@ -3,9 +3,8 @@
 import { motion } from "framer-motion";
 import Footer from "@/components/Footer";
 import HeroBackground from "@/components/HeroBackground";
-import Sidebar from "@/components/Sidebar";
 
-export default function VisionPage() {
+export default function Vision() {
   const values = [
     {
       icon: "🏆",
@@ -35,9 +34,7 @@ export default function VisionPage() {
 
   return (
     <div className="min-h-screen">
-      <Sidebar />
-
-      <main className="pt-16">
+      <main className="pt-24 md:pt-32">
         <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
           <HeroBackground />
           <div className="max-w-5xl mx-auto">
